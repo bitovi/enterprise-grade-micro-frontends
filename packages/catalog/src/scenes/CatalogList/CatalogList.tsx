@@ -10,6 +10,7 @@ import { useCatalogList } from "./hooks/useCatalogList";
 /// Leave separate - these are temporary
 import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 ///
 
 const CatalogList: FC = () => {
@@ -40,10 +41,14 @@ const CatalogList: FC = () => {
 
 export default CatalogList;
 
+const client = new QueryClient();
+
 const TempWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <MantineProvider stylesTransform={emotionTransform}>
-      <MantineEmotionProvider>{children}</MantineEmotionProvider>
+      <MantineEmotionProvider>
+        <QueryClientProvider client={client}>{children}</QueryClientProvider>
+      </MantineEmotionProvider>
     </MantineProvider>
   );
 };
