@@ -17,21 +17,3 @@ export namespace Order {
     image: string;
   }
 }
-
-interface OrderEventMap {
-  "add-to-cart": CustomEvent<Order.AddToCartEvent>;
-}
-
-declare global {
-  interface Window {
-    addEventListener<K extends keyof OrderEventMap>(
-      type: K,
-      listener: (this: Window, ev: OrderEventMap[K]) => void
-    ): void;
-    removeEventListener<K extends keyof OrderEventMap>(
-      type: K,
-      listener: (this: Window, ev: OrderEventMap[K]) => void
-    ): void;
-    dispatchEvent<K extends keyof OrderEventMap>(ev: OrderEventMap[K]): void;
-  }
-}
