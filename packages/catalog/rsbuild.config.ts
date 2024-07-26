@@ -10,6 +10,7 @@ export default defineConfig({
       exposes: {
         "./list": "./src/scenes/CatalogList/index.ts",
         "./filter": "./src/scenes/Filter/index.ts",
+        "./search": "./src/scenes/Search/index.ts",
       },
       shared: {
         react: {

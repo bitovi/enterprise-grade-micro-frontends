@@ -9,3 +9,9 @@ declare module "catalog/filter" {
 
   export default function Filter(): ReturnType<FC>;
 }
+
+declare module "catalog/search" {
+  import type { FC } from "react";
+
+  export default function Search(): ReturnType<FC>;
+}

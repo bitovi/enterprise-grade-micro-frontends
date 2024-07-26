@@ -1,8 +1,12 @@
 import type { FC } from "react";
 
-import { Button, Flex, Group, Tooltip } from "@mantine/core";
+import { Suspense, lazy } from "react";
+import { Button, Flex, Group, Skeleton, Tooltip } from "@mantine/core";
 import { IconAlertTriangle, IconUser } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
+
+const Cart = lazy(() => import("order/cart"));
 
 const Shortcuts: FC = () => {
   return (
@@ -16,7 +20,11 @@ const Shortcuts: FC = () => {
       >
         <IconUser />
       </Button>
-      {/* Cart goes here */}
+      <ErrorBoundary fallback={<CartError />}>
+        <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
+          <Cart checkoutUrl="/order" />
+        </Suspense>
+      </ErrorBoundary>
     </Group>
   );
 };
