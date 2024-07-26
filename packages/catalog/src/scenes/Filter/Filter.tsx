@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from "react";
+import type { Catalog } from "shared-types";
 
 import { Container, Divider } from "@mantine/core";
 
@@ -10,7 +11,7 @@ import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 ///
 
-const Filter: FC = () => {
+const Filter: Catalog.Filter = () => {
   return (
     <TempWrapper>
       <Container fluid px="md" w="350" py="lg">

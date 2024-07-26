@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from "react";
+import type { Catalog } from "shared-types";
 
 import { Flex } from "@mantine/core";
 
@@ -12,7 +13,7 @@ import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 ///
 
-const CatalogList: FC = () => {
+const CatalogList: Catalog.CatalogList = () => {
   const { isError, isLoading, catalogList } = useCatalogList();
 
   if (isLoading) {

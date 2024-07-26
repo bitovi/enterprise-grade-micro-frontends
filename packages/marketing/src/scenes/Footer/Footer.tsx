@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from "react";
+import type { Marketing } from "shared-types";
 
 import { Flex, Text } from "@mantine/core";
 
@@ -13,7 +14,7 @@ import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 ///
 
-const Footer: FC = () => {
+const Footer: Marketing.Footer = () => {
   return (
     <TempWrapper>
       <Flex
