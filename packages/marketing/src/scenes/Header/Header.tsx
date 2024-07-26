@@ -1,4 +1,4 @@
-import type { Marketing } from "shared-types";
+import type { FC, ReactNode } from "react";
 
 import { Divider, Flex } from "@mantine/core";
 
@@ -7,24 +7,45 @@ import Search from "./components/Search";
 import Links from "./components/Links";
 import Shortcuts from "./components/Shortcuts";
 
-const Header: Marketing.Header = () => {
+/// Leave separate - these are temporary
+import { MantineProvider } from "@mantine/core";
+import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
+///
+
+const Header: FC = () => {
   return (
-    <Flex component="header" py="md" align="center" justify="center" bg="dark">
+    <TempWrapper>
       <Flex
-        justify="space-between"
+        component="header"
+        py="md"
         align="center"
-        w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}
+        justify="center"
+        bg="dark"
       >
-        <HomeLink />
-        <Links />
-        <Flex gap="md">
-          <Search />
-          <Divider orientation="vertical" />
-          <Shortcuts />
+        <Flex
+          justify="space-between"
+          align="center"
+          w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}
+        >
+          <HomeLink />
+          <Links />
+          <Flex gap="md">
+            <Search />
+            <Divider orientation="vertical" />
+            <Shortcuts />
+          </Flex>
         </Flex>
       </Flex>
-    </Flex>
+    </TempWrapper>
   );
 };
 
 export default Header;
+
+const TempWrapper: FC<{ children: ReactNode }> = ({ children }) => {
+  return (
+    <MantineProvider stylesTransform={emotionTransform}>
+      <MantineEmotionProvider>{children}</MantineEmotionProvider>
+    </MantineProvider>
+  );
+};

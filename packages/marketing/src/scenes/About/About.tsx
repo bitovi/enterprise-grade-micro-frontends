@@ -1,8 +1,8 @@
-import type { Marketing } from "shared-types";
+import type { FC } from "react";
 
 import { Container, List, ListItem, Stack, Title, Text } from "@mantine/core";
 
-const About: Marketing.About = () => {
+const About: FC = () => {
   return (
     <Container p="md">
       <Stack>

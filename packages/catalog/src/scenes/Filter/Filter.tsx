@@ -1,29 +1,33 @@
+import type { FC, ReactNode } from "react";
+
 import { Container, Divider } from "@mantine/core";
 
 import Categories from "./components/Categories";
 import Filters from "./components/Filters/Filters";
 
-import { Catalog } from "shared-types";
+/// Leave separate - these are temporary
+import { MantineProvider } from "@mantine/core";
+import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
+///
 
-function broadcastPriceChange(min: string, max: string) {
-  document.dispatchEvent(
-    new CustomEvent("catalog-filter-price", {
-      detail: {
-        min,
-        max,
-      },
-    })
-  );
-}
-
-const Filter: Catalog.Filter = () => {
+const Filter: FC = () => {
   return (
-    <Container fluid px="md" w="350" py="lg">
-      <Categories />
-      <Divider mt="md" mb="lg" />
-      <Filters onPriceChange={broadcastPriceChange} />
-    </Container>
+    <TempWrapper>
+      <Container fluid px="md" w="350" py="lg">
+        <Categories />
+        <Divider mt="md" mb="lg" />
+        <Filters onPriceChange={() => {}} />
+      </Container>
+    </TempWrapper>
   );
 };
 
 export default Filter;
+
+const TempWrapper: FC<{ children: ReactNode }> = ({ children }) => {
+  return (
+    <MantineProvider stylesTransform={emotionTransform}>
+      <MantineEmotionProvider>{children}</MantineEmotionProvider>
+    </MantineProvider>
+  );
+};
