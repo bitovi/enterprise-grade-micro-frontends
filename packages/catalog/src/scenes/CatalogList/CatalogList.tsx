@@ -25,30 +25,30 @@ const CatalogList: FC = () => {
   }
 
   return (
-    <TempWrapper>
-      <Flex gap="md" direction="row" wrap="wrap" p="md">
-        {catalogList?.map((product) => (
-          <CatalogListItem
-            key={product.name}
-            {...product}
-            href={`/shop/item/${product.href}`}
-          />
-        ))}
-      </Flex>
-    </TempWrapper>
+    <Flex gap="md" direction="row" wrap="wrap" p="md">
+      {catalogList?.map((product) => (
+        <CatalogListItem
+          key={product.name}
+          {...product}
+          href={`/shop/item/${product.href}`}
+        />
+      ))}
+    </Flex>
   );
 };
 
-export default CatalogList;
-
 const client = new QueryClient();
 
-const TempWrapper: FC<{ children: ReactNode }> = ({ children }) => {
+const TempWrapper: FC<{ children: ReactNode }> = () => {
   return (
     <MantineProvider stylesTransform={emotionTransform}>
       <MantineEmotionProvider>
-        <QueryClientProvider client={client}>{children}</QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <CatalogList />
+        </QueryClientProvider>
       </MantineEmotionProvider>
     </MantineProvider>
   );
 };
+
+export default TempWrapper;
