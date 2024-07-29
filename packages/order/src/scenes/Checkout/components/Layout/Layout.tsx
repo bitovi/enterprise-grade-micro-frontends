@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { Grid } from "@mantine/core";
 
 import OrderSummary from "./components/OrderSummary";
+import { Outlet } from "react-router-dom";
 
 const Layout: FC<{ id?: number }> = ({ id }) => {
   return (
@@ -11,7 +12,7 @@ const Layout: FC<{ id?: number }> = ({ id }) => {
         <OrderSummary id={id} />
       </Grid.Col>
       <Grid.Col span={{ md: 12, lg: 6 }}>
-        <div>Placeholder</div>
+        <Outlet />
       </Grid.Col>
     </Grid>
   );

@@ -3,3 +3,9 @@ declare module "order/cart" {
 
   export default function Cart(props: { checkoutUrl?: string }): ReturnType<FC>;
 }
+
+declare module "order/checkout" {
+  import type { FC } from "react";
+
+  export default function Checkout(): ReturnType<FC>;
+}

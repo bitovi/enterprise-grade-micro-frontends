@@ -10,7 +10,14 @@ import { useCheckout } from "./hooks/useCheckout";
 const Checkout: FC = () => {
   const { checkout, navigateToCheckout } = useCheckout();
 
-  return <div>Implement the routes for the checkout flow here</div>;
+  return (
+    <Routes>
+      <Route path="*" element={<Layout />}>
+        <Route index element={<Shipping onSubmit={navigateToCheckout} />} />
+        <Route path="checkout" element={<Payment onSubmit={checkout} />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default Checkout;

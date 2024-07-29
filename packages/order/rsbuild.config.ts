@@ -9,6 +9,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./cart": "./src/scenes/Cart/Cart.tsx",
+        "./checkout": "./src/scenes/Checkout/index.ts",
       },
       shared: {
         react: {
