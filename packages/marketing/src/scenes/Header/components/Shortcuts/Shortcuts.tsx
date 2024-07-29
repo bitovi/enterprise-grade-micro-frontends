@@ -30,3 +30,13 @@ const Shortcuts: FC = () => {
 };
 
 export default Shortcuts;
+
+const CartError: FC = () => {
+  return (
+    <Flex justify="center" align="center">
+      <Tooltip label="Our cart is having some issues">
+        <IconAlertTriangle color="yellow" size={18} width={30} height={30} />
+      </Tooltip>
+    </Flex>
+  );
+};
