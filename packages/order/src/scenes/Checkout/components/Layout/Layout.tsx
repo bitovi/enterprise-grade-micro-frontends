@@ -5,11 +5,11 @@ import { Grid } from "@mantine/core";
 import OrderSummary from "./components/OrderSummary";
 import { Outlet } from "react-router-dom";
 
-const Layout: FC<{ id?: number }> = ({ id }) => {
+const Layout: FC = () => {
   return (
     <Grid align="center">
       <Grid.Col span={{ md: 12, lg: 6 }}>
-        <OrderSummary id={id} />
+        <OrderSummary />
       </Grid.Col>
       <Grid.Col span={{ md: 12, lg: 6 }}>
         <Outlet />
