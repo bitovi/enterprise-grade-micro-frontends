@@ -14,6 +14,7 @@ import Contact from "./scenes/Contact";
 import Account from "./scenes/Account";
 import Item from "./scenes/Item";
 import Login from "./scenes/Login";
+import Checkout from "./scenes/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,9 @@ const App = () => {
                 </Route>
                 <Route path="/account" element={<Layout />}>
                   <Route index element={<Account />} />
+                </Route>
+                <Route path="/order" element={<Layout />}>
+                  <Route index path="*" element={<Checkout />} />
                 </Route>
               </Routes>
             </BrowserRouter>
