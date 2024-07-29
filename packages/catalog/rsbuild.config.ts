@@ -9,6 +9,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./list": "./src/scenes/CatalogList/index.ts",
+        "./item": "./src/scenes/CatalogItem/index.ts",
         "./filter": "./src/scenes/Filter/index.ts",
         "./search": "./src/scenes/Search/index.ts",
       },

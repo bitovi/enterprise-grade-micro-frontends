@@ -12,6 +12,7 @@ import Shop from "./scenes/Shop";
 import About from "./scenes/About";
 import Contact from "./scenes/Contact";
 import Account from "./scenes/Account";
+import Item from "./scenes/Item";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path="/" element={<Navigate to="/shop" />} />
                 <Route path="/shop" element={<Layout />}>
                   <Route index element={<Shop />} />
+                  <Route path="item/:productId" element={<Item />} />
                 </Route>
                 <Route path="/about" element={<Layout />}>
                   <Route index element={<About />} />

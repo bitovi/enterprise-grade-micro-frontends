@@ -4,4 +4,5 @@ namespace Catalog {
   export type CatalogList = FC;
   export type Filter = FC;
   export type Search = FC;
+  export type CatalogItem = FC;
 }
