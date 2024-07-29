@@ -3,6 +3,10 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import { sentryWebpackPlugin } from "@sentry/webpack-plugin";
 
 export default defineConfig({
+  html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Catalog MFE",
+  },
   output: {
     sourceMap: {
       js: "source-map",
