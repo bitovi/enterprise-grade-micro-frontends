@@ -9,6 +9,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./account": "./src/scenes/Account/index.ts",
+        "./login": "./src/scenes/Login/index.ts",
       },
       shared: {
         react: {
