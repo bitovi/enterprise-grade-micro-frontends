@@ -3,7 +3,7 @@ import type { FC, ReactNode } from "react";
 import { Container, Divider } from "@mantine/core";
 
 import Categories from "./components/Categories";
-import Filters from "./components/Filters/Filters";
+import Filters from "./components/Filters";
 
 /// Leave separate - these are temporary
 import { MantineProvider } from "@mantine/core";
