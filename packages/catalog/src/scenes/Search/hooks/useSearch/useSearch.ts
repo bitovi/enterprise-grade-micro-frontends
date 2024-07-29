@@ -6,12 +6,24 @@ import { useDebouncedValue } from "@mantine/hooks";
 
 export const useSearch = (): {
   search: string;
-  setSearch: Dispatch<SetStateAction<string>>;
+  setSearch: (newSearch: string) => void;
 } => {
-  // Placeholders remove once ready
-  const search = "";
-  const setSearch: Dispatch<SetStateAction<string>> = (newString) => {};
-  //
+  const [search, setSearch] = useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [debouncedSearch] = useDebouncedValue(search, 250);
+
+  useEffect(() => {
+    if (!debouncedSearch) {
+      searchParams.delete("search");
+      setSearchParams(searchParams);
+
+      return;
+    }
+
+    setSearchParams({ ...searchParams, search: debouncedSearch });
+  }, [debouncedSearch]);
 
   return {
     search,

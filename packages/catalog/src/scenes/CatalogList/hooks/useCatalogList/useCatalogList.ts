@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchProducts } from "@services/product";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const getKey = (category?: string) => {
   if (!category) {
@@ -16,6 +16,8 @@ const getKey = (category?: string) => {
 
 export const useCatalogList = () => {
   const { category } = useParams<{ category: string }>();
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search");
 
   const { data, isLoading, isError } = useQuery({
     queryKey: getKey(category),
@@ -42,9 +44,13 @@ export const useCatalogList = () => {
     };
   }, []);
 
-  const filtered = data?.filter((item) => {
-    return (!+min || item.price >= +min) && (!+max || item.price <= +max);
-  });
+  const filtered = data
+    ?.filter((item) => {
+      return (!+min || item.price >= +min) && (!+max || item.price <= +max);
+    })
+    .filter((item) => {
+      return !search || item.name.toLowerCase().includes(search.toLowerCase());
+    });
 
   return { catalogList: filtered, isLoading, isError };
 };
