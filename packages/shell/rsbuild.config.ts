@@ -8,6 +8,7 @@ export default defineConfig({
       remotes: {
         marketing: "marketing@http://localhost:3004/remoteEntry.js",
         catalog: "catalog@http://localhost:3001/remoteEntry.js",
+        profile: "profile@http://localhost:3003/remoteEntry.js",
       },
       shared: {
         react: {
