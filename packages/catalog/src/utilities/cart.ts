@@ -8,21 +8,7 @@ export const addToCart = ({
   price,
   description,
   imgSrc,
-}: CartItem) => {
-  document.dispatchEvent(
-    new CustomEvent("add-to-cart", {
-      detail: {
-        item: {
-          id,
-          title: name,
-          price,
-          description,
-          image: imgSrc,
-        },
-      },
-    })
-  );
-};
+}: CartItem) => {};
 
 export const toCurrency = (amount: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
