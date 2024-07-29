@@ -1,40 +1,26 @@
-import type { Order } from "shared-types";
-import type { UserCart } from "@services/cart";
-
-import { useEffect } from "react";
-import { useLocalStorage } from "@mantine/hooks";
-
-import { cartKey, getTotals, newCart } from "@services/cart";
-import { addToProducts, increaseQuantity, itemInCart } from "./utilities";
-
 export const useCart = () => {
-  const [cart, setCart] = useLocalStorage<UserCart>({
-    key: cartKey,
-    defaultValue: newCart,
-  });
-
-  useEffect(() => {
-    const onAddToCart = (event: CustomEvent<Order.AddToCartEvent>) => {
-      const { item } = event.detail;
-
-      setCart((currentCart) => {
-        const isExistingItem = itemInCart(currentCart, item);
-        const updatedProducts = isExistingItem
-          ? increaseQuantity(currentCart.products, item.id)
-          : addToProducts(currentCart.products, item);
-
-        return {
-          ...currentCart,
-          products: updatedProducts,
-          ...getTotals(updatedProducts),
-        };
-      });
-    };
-
-    window.addEventListener("add-to-cart", onAddToCart);
-
-    return () => window.removeEventListener("add-to-cart", onAddToCart);
-  }, []);
-
-  return cart;
+  return {
+    userId: 100000000,
+    id: 100000001,
+    products: [
+      {
+        id: 1,
+        title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+        price: 109.95,
+        image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        quantity: 1,
+      },
+      {
+        id: 2,
+        title: "Mens Casual Premium Slim Fit T-Shirts ",
+        price: 22.3,
+        image:
+          "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+        quantity: 1,
+      },
+    ],
+    subTotal: 132.25,
+    tax: 9.588125,
+    total: 141.838125,
+  };
 };
