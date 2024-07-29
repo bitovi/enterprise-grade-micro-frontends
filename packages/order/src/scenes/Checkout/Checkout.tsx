@@ -1,4 +1,4 @@
-import type { Order } from "shared-types";
+import type { FC } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -7,17 +7,10 @@ import Layout from "./components/Layout";
 import Payment from "./components/Payment";
 import { useCheckout } from "./hooks/useCheckout";
 
-const Checkout: Order.Checkout = ({ id, homePath }) => {
-  const { checkout, navigateToCheckout } = useCheckout(homePath);
+const Checkout: FC = () => {
+  const { checkout, navigateToCheckout } = useCheckout();
 
-  return (
-    <Routes>
-      <Route path="*" element={<Layout id={id} />}>
-        <Route index element={<Shipping onSubmit={navigateToCheckout} />} />
-        <Route path="checkout" element={<Payment onSubmit={checkout} />} />
-      </Route>
-    </Routes>
-  );
+  return <div>Implement the routes for the checkout flow here</div>;
 };
 
 export default Checkout;
