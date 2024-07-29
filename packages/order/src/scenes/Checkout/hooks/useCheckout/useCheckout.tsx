@@ -1,8 +1,11 @@
 import { notifications } from "@mantine/notifications";
 import { IconCheck } from "@tabler/icons-react";
 import { rem } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 
 export const useCheckout = () => {
+  const navigate = useNavigate();
+
   const checkout = () => {
     notifications.show({
       title: "Purchase Complete",
@@ -10,11 +13,11 @@ export const useCheckout = () => {
       icon: <IconCheck style={{ width: rem(20), height: rem(20) }} />,
     });
 
-    // Implement return to shop logic below
+    navigate("/shop");
   };
 
   const navigateToCheckout = () => {
-    // Implement to checkout logic below
+    navigate("checkout");
   };
 
   return {

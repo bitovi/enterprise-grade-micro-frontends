@@ -34,6 +34,10 @@ export default defineConfig({
           requiredVersion: "^7.10.2",
           singleton: true,
         },
+        "@mantine/notifications": {
+          requiredVersion: false,
+          singleton: true,
+        },
         "@tanstack/react-query": {
           requiredVersion: "^5.48.0",
           singleton: true,
