@@ -9,7 +9,7 @@ import {
   Breadcrumbs,
   Anchor,
 } from "@mantine/core";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchProduct } from "@services/product";
@@ -21,7 +21,7 @@ import CatalogItemSkeleton from "./components/CatalogItemSkeleton";
 import CatalogItemError from "./components/CatalogItemError";
 
 const CatalogItem: FC = () => {
-  const { productId } = useParams<{ productId: string }>();
+  const productId = "1";
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["product", productId],
