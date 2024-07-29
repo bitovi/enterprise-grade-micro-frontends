@@ -4,10 +4,21 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchProducts } from "@services/product";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+const getKey = (category?: string) => {
+  if (!category) {
+    return ["products"];
+  }
+
+  return ["products", "category", category];
+};
 
 export const useCatalogList = () => {
+  const { category } = useParams<{ category: string }>();
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["products"],
+    queryKey: getKey(category),
     queryFn: fetchProducts,
   });
 
