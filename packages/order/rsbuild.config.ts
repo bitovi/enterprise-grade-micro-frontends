@@ -3,10 +3,6 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import { sentryWebpackPlugin } from "@sentry/webpack-plugin";
 
 export default defineConfig({
-  html: {
-    favicon: "./src/assets/favicon.png",
-    title: "Order MFE",
-  },
   source: {
     define: {
       "process.env": JSON.stringify(process.env),
@@ -17,6 +13,10 @@ export default defineConfig({
       "@components": "./src/components",
       "@utilities": "./src/utilities",
     },
+  },
+  html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Order MFE",
   },
   tools: {
     rspack: {
