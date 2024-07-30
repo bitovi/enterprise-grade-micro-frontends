@@ -1,4 +1,4 @@
-import type { Order } from "shared-types";
+import type { FC } from "react";
 
 import { Button, Flex, HoverCard, Text } from "@mantine/core";
 import { IconShoppingCart } from "@tabler/icons-react";
@@ -9,7 +9,7 @@ import CartSummary from "@components/CartSummary";
 import { useCart } from "./hook/useCart";
 import { Link } from "react-router-dom";
 
-const Cart: Order.Cart = ({ checkoutUrl }) => {
+const Cart: FC = () => {
   const cart = useCart();
   const cartHasItems = cart.products.length !== 0;
 
@@ -25,7 +25,7 @@ const Cart: Order.Cart = ({ checkoutUrl }) => {
         {cartHasItems ? (
           <>
             <CartSummary products={cart.products} />
-            <Button component={Link} to={checkoutUrl || "/order"}>
+            <Button component={Link} to="/order">
               Checkout
             </Button>
           </>

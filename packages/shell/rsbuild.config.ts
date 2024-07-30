@@ -51,6 +51,8 @@ export default defineConfig({
     },
   },
   html: {
+    favicon: "./src/assets/favicon.png",
+    title: "The Shell Application",
     tags: [
       {
         tag: "base",
