@@ -28,6 +28,7 @@
     "@rsbuild/plugin-react": "^0.6.6",
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
+    "shared-types": "^0.0.0",
     "typescript": "^5.4.2"
   }
 }
