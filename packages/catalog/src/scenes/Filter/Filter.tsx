@@ -3,7 +3,7 @@ import type { Catalog } from "shared-types";
 import { Container, Divider } from "@mantine/core";
 
 import Categories from "./components/Categories";
-import Filters from "./components/Filters/Filters";
+import Filters from "./components/Filters";
 
 const Filter: Catalog.Filter = () => {
   return (
