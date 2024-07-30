@@ -56,6 +56,10 @@ export default defineConfig({
       "process.env": JSON.stringify(process.env),
     },
   },
+  html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Marketing MFE",
+  },
   tools: {
     rspack: {
       plugins: [
