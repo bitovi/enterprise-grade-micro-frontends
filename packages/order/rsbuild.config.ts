@@ -14,6 +14,10 @@ export default defineConfig({
       "@utilities": "./src/utilities",
     },
   },
+  html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Order MFE",
+  },
   tools: {
     rspack: {
       plugins: [
