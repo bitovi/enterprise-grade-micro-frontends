@@ -24,10 +24,7 @@ const App: FC = () => {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Navigate to="/order" />} />
-                <Route
-                  path="/order/*"
-                  element={<Checkout id={1} homePath="/" />}
-                />
+                <Route path="/order/*" element={<Checkout />} />
                 <Route path="/cart" element={<Cart />} />
               </Routes>
               <RemoteLinks />
