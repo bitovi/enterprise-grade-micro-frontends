@@ -14,6 +14,7 @@ interface DetailsProps {
   href: string;
   id: number;
   imgSrc: string;
+  category: string;
 }
 
 const Details: FC<DetailsProps> = (props) => {

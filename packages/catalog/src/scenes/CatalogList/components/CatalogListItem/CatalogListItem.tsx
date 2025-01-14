@@ -12,6 +12,7 @@ export interface CatalogListItemProps {
   price: number;
   id: number;
   description: string;
+  category: string;
 }
 
 const CatalogListItem: FC<CatalogListItemProps> = (props) => {
@@ -21,13 +22,7 @@ const CatalogListItem: FC<CatalogListItemProps> = (props) => {
     <Card shadow="sm" p={0} h={350} w={225}>
       <Stack gap="sm">
         <Link to={href}>
-          <Image
-            src={imgSrc}
-            alt={name}
-            height={200}
-            width={250}
-            fit="scale-down"
-          />
+          <Image src={imgSrc} alt={name} height={200} width={250} fit="scale-down" />
         </Link>
         <Stack gap="sm" px="md">
           <Tooltip label={name}>
