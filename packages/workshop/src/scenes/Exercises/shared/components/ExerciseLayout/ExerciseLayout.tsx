@@ -20,7 +20,9 @@ const ExerciseLayout: FC<ExerciseLayoutProps> = ({ children, title, next, previo
       </Title>
       {slides && (
         <Flex pb="lg">
-          <a href={slides} target="_blank">To Relevant Slides</a>
+          <a href={slides} target="_blank">
+            To Relevant Slides
+          </a>
         </Flex>
       )}
       {children}
