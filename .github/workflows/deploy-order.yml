@@ -106,7 +106,7 @@ jobs:
           path: packages/catalog/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -140,7 +140,7 @@ jobs:
           path: packages/marketing/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -174,7 +174,7 @@ jobs:
           path: packages/order/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -208,7 +208,7 @@ jobs:
           path: packages/profile/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -242,7 +242,7 @@ jobs:
           path: packages/shell/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -276,7 +276,7 @@ jobs:
           path: packages/workshop/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
