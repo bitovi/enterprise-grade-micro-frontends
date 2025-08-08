@@ -31,11 +31,19 @@ const GettingSetup: FC = () => {
         </Anchor>
         .
       </Text>
+      <CodeHighlight
+        my="lg"
+        lang="sh"
+        code="git clone https://github.com/bitovi/enterprise-grade-micro-frontends.git"
+      />
       <Text pt="lg">
         Once cloned, checkout out the <Code>main</Code> branch and open the project in your IDE of choice - although
         this will be written with vscode in mind - and install the project dependencies.
       </Text>
-
+      <Alert title="A Quick Note on the setup Script" icon={<IconInfoCircle />} my="xl">
+        This executes a shell script that will initialize all the needed environment variables. If you are using
+        windows, please be sure to execute this in bash or something sh compatible
+      </Alert>
       <CodeHighlight my="lg" lang="sh" code={`npm run setup:local \nnpm install`} />
       <Text>Once installed, run the following command.</Text>
       <CodeHighlight my="lg" lang="sh" code="npm run start" />

@@ -21,20 +21,31 @@ export interface UserCart extends BaseCart {
 }`;
 
 const localStorageHook = `const [cart, setCart] = useLocalStorage<UserCart>({
-    key: cartKey,
-    defaultValue: newCart,
-  });`;
-
-const addToCartEvent = ` export interface CatalogItem {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-}
+  key: cartKey,
+  defaultValue: newCart,
+});
   
-type AddToCartEvent = { item: CatalogItem };
+// TODO: in Part 2, add the event listener to update the cart state
+
+return cart
+`;
+
+const addToCartEvent = `
+// shared-types/types/order/index.d.ts
+export namespace Order {
+  // Other types...
+
+  export interface CatalogItem {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+  }
+  
+  type AddToCartEvent = { item: CatalogItem };
+}
 `;
 
 const globalTypeHelp = `declare global {
@@ -132,11 +143,10 @@ const AddingItemsToCart: FC = () => {
         a form of persistence, as opposed to a communication method.
       </Alert>
       <Text>
-        Let's start by adding the cart state (of type <Code>UserCart</Code>); we want to store it in local storage like
-        the login state. To do this, the cart service has a couple of helpers, the <Code>cartKey</Code> and the{" "}
-        <Code>newCart</Code>, which serve as the local storage key and the default value, respectively. This logic
-        should reside in the <Code>useCart</Code>
-        hook which currently has a hard-coded cart.
+        The logic that resides in the <Code>useCart</Code> hook currently has a hard-coded cart. Let's start by adding
+        the cart state (of type <Code>UserCart</Code>); we want to store it in local storage like the login state. To do
+        this, the cart service has a couple of helpers, the <Code>cartKey</Code> and the <Code>newCart</Code>, which
+        serve as the local storage key and the default value, respectively.
       </Text>
       <CodeHighlight my="lg" code={`import { cartKey, getTotals, newCart } from "@services/cart";`} />
       <Accordion>

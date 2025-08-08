@@ -257,6 +257,7 @@ jobs:
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
+          aws_site_error_document: index.html
 
           aws_r53_domain_name: bitovi-sandbox.com
           aws_r53_sub_domain_name: micro-frontend-workshop
