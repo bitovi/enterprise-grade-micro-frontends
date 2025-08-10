@@ -32,7 +32,16 @@ const AddingMoreMicroFrontends: FC = () => {
         <Anchor component={Link} to="../exercise-1">
           the previous section
         </Anchor>
-        . Also check out the cheat sheet for quick reminders for things like port numbers and associated MFEs.
+        . Also check out the cheat sheet for quick reminders for things like port numbers and associated MFEs. As a
+        quick reminder for new micro-frontends:
+        <List py="lg">
+          <List.Item>Create the types for the modules and namespaces for the projects and MFEs</List.Item>
+          <List.Item>Update the types of the MFEs to be consumed</List.Item>
+          <List.Item>Expose the MFEs in their respective projects</List.Item>
+          <List.Item>Consume the MFEs in the shell application</List.Item>
+          <List.Item>Add any shared modules</List.Item>
+          <List.Item>Import and use the MFEs</List.Item>
+        </List>
       </Alert>
 
       <Text pt="md">

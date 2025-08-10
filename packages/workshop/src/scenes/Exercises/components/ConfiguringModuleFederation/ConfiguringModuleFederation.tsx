@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import { Code, Flex, Image, List, Text, Title, Table, Alert } from "@mantine/core";
+import { Code, Flex, Image, List, Text, Title, Table, Alert, Anchor } from "@mantine/core";
 
 import { CodeHighlight, CodeHighlightTabs } from "@mantine/code-highlight";
 
@@ -10,6 +10,7 @@ import { IconInfoCircle } from "@tabler/icons-react";
 
 import current from "./assets/current-app.png";
 import goal from "./assets/goal-app.png";
+import { Link } from "react-router-dom";
 
 const headerExposed = `export default defineConfig({
   // ... other configs
@@ -355,6 +356,9 @@ const ConfiguringModuleFederation: FC = () => {
         Now that Module Federation is fully configured, we can import and render the Header. The Header can be placed in{" "}
         <Code>shell/src/components/Layout/Layout.tsx</Code> where the "header" placeholder is.
       </Text>
+      <Alert title="Don't forget Suspense!" icon={<IconInfoCircle />} my="xl">
+        The only way to handle dynamic imports with React is to use <Code>React.lazy</Code> and <Code>Suspense</Code>.
+      </Alert>
       <CodeHighlightTabs
         my="lg"
         code={[{ fileName: "shell/src/components/Layout/Layout.tsx", language: "ts", code: layoutHeader }]}
