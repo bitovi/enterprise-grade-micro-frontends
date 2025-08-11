@@ -1,5 +1,9 @@
 import { CatalogItem } from "@services/shared/types";
 
+const patchUrl = (url: string): string => {
+  return url.replace(/_\.jpg$/, '_t.png');
+}
+
 export async function fetchRelated(category: string): Promise<CatalogItem[]> {
   try {
     const response = await fetch(
@@ -13,8 +17,8 @@ export async function fetchRelated(category: string): Promise<CatalogItem[]> {
     const data = await response.json();
     const mappedData: CatalogItem[] = data.map((item: any) => ({
       id: item.id,
-      href: item.image,
-      imgSrc: item.image,
+      href: patchUrl(item.image),
+      imgSrc: patchUrl(item.image),
       name: item.title,
       price: item.price,
       description: item.description,
