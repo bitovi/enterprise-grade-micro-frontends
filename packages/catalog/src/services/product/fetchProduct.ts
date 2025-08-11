@@ -1,5 +1,9 @@
 import { CatalogItem } from "@services/shared/types";
 
+const patchUrl = (url: string): string => {
+  return url.replace(/_\.jpg$/, '_t.png');
+}
+
 export async function fetchProduct(
   id: string | undefined
 ): Promise<CatalogItem> {
@@ -15,8 +19,8 @@ export async function fetchProduct(
     const data = await response.json();
     const mappedData: CatalogItem = {
       id: data.id,
-      href: data.image,
-      imgSrc: data.image,
+      href: patchUrl(data.image),
+      imgSrc: patchUrl(data.image),
       name: data.title,
       price: data.price,
       description: data.description,
