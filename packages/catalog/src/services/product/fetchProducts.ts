@@ -2,6 +2,10 @@ import { CatalogItem } from "@services/shared/types";
 
 import { QueryKey } from "@tanstack/react-query";
 
+const patchUrl = (url: string): string => {
+  return url.replace(/\.jpg$/, 't.png');
+}
+
 export async function fetchProducts({
   queryKey,
 }: {
@@ -20,7 +24,7 @@ export async function fetchProducts({
     const mappedData: CatalogItem[] = data.map((product: any) => ({
       id: product.id,
       href: product.id,
-      imgSrc: product.image,
+      imgSrc: patchUrl(product.image),
       name: product.title,
       price: product.price,
     }));
