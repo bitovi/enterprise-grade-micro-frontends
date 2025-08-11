@@ -1,7 +1,7 @@
 import { CatalogItem } from "@services/shared/types";
 
 const patchUrl = (url: string): string => {
-  return url.replace(/_\.jpg$/, '_t.png');
+  return url.replace(/\.jpg$/, 't.png');
 }
 
 export async function fetchRelated(category: string): Promise<CatalogItem[]> {
