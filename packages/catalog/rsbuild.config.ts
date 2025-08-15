@@ -37,6 +37,9 @@ export default defineConfig({
   moduleFederation: {
     options: {
       name: "catalog",
+      remotes: {
+        order: `order@${process.env.MFE_URL_ORDER}/remoteEntry.js`,
+      },
       exposes: {
         "./list": "./src/scenes/CatalogList/index.ts",
         "./item": "./src/scenes/CatalogItem/index.ts",

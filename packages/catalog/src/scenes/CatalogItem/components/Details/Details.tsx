@@ -2,9 +2,10 @@ import type { FC } from "react";
 
 import { Text, Group, Button, Title } from "@mantine/core";
 
-import { addToCart, toCurrency } from "@utilities/cart";
+import { toCurrency } from "@utilities/cart";
 
 import Rating from "./components/Rating";
+import { UseCart } from "order/cart-injector";
 
 interface DetailsProps {
   name: string;
@@ -14,10 +15,11 @@ interface DetailsProps {
   href: string;
   id: number;
   imgSrc: string;
+  addToCart: ReturnType<UseCart>[1];
 }
 
-const Details: FC<DetailsProps> = (props) => {
-  const { name, rating, description, price } = props;
+const Details: FC<DetailsProps> = ({ addToCart, ...props }) => {
+  const { name, rating, description, price, imgSrc } = props;
 
   return (
     <>
@@ -32,7 +34,19 @@ const Details: FC<DetailsProps> = (props) => {
         <Text size="xl" fw={700}>
           {toCurrency(price)}
         </Text>
-        <Button bg="black" onClick={() => addToCart(props)}>
+        <Button
+          bg="black"
+          onClick={() =>
+            addToCart({
+              item: {
+                title: name,
+                image: imgSrc,
+                category: "",
+                ...props,
+              },
+            })
+          }
+        >
           Add to Cart
         </Button>
       </Group>

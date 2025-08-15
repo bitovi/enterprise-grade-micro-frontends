@@ -43,6 +43,7 @@ export default defineConfig({
       exposes: {
         "./cart": "./src/scenes/Cart/index.ts",
         "./checkout": "./src/scenes/Checkout/index.ts",
+        "./cart-injector": "./src/scenes/CartProvider/index.ts",
       },
       shared: {
         "@mantine/core": {
