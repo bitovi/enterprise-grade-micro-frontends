@@ -1,18 +1,12 @@
 import type { Catalog } from "shared-types";
 
-import {
-  Container,
-  Grid,
-  Stack,
-  Divider,
-  Text,
-  Breadcrumbs,
-  Anchor,
-} from "@mantine/core";
+import { Container, Grid, Stack, Divider, Text, Breadcrumbs, Anchor } from "@mantine/core";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchProduct } from "@services/product";
+
+import { useCart } from "cart-api";
 
 import Images from "./components/Images";
 import Details from "./components/Details";
@@ -21,6 +15,7 @@ import CatalogItemSkeleton from "./components/CatalogItemSkeleton";
 import CatalogItemError from "./components/CatalogItemError";
 
 const CatalogItem: Catalog.Item = () => {
+  const [cart, setCart] = useCart();
   const { productId } = useParams<{ productId: string }>();
 
   const { data, isLoading, isError } = useQuery({
@@ -44,7 +39,7 @@ const CatalogItem: Catalog.Item = () => {
           <Stack gap="md">
             <Breadcrumbs mb="xl">
               <Anchor component={Link} to="/shop">
-                Shop
+                Shop {cart} <button onClick={() => setCart((p) => p + 1)}>click</button>
               </Anchor>
               <Text>{data.name}</Text>
             </Breadcrumbs>

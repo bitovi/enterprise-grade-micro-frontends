@@ -10,11 +10,14 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
+    "composite": true,
     "baseUrl": ".",
+    "customConditions": ["development"],
     "paths": {
       "@services/*": ["./src/services/*"],
       "@utilities/*": ["./src/utilities/*"]
     }
   },
-  "include": ["./src"]
+  "include": ["./src"],
+
 }

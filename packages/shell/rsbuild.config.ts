@@ -31,6 +31,10 @@ export default defineConfig({
         workshop: `workshop@${process.env.MFE_URL_WORKSHOP}/workshop.js`,
       },
       shared: {
+        "cart-api": {
+          requiredVersion: "^0.0.0",
+          singleton: true,
+        },
         "@mantine/core": {
           requiredVersion: "^7.10.2",
           singleton: true,

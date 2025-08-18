@@ -9,7 +9,9 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "customConditions": ["development"],
+    "composite": true
   },
   "include": ["./src"]
 }

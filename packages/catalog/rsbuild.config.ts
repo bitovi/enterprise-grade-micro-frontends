@@ -45,6 +45,10 @@ export default defineConfig({
       },
       filename: "remoteEntry.js",
       shared: {
+        "cart-api": {
+          requiredVersion: "^0.0.0",
+          singleton: true,
+        },
         "@mantine/core": {
           requiredVersion: "^7.10.2",
           singleton: true,
