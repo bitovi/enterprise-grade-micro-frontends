@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version-file: ".nvmrc"
 
@@ -59,37 +59,37 @@ jobs:
         run: nx run-many -t build --parallel=10
 
       - name: Upload catalog build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: catalog-artifacts
           path: packages/catalog/dist
 
       - name: Upload marketing build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: marketing-artifacts
           path: packages/marketing/dist
 
       - name: Upload order build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: order-artifacts
           path: packages/order/dist
 
       - name: Upload profile build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: profile-artifacts
           path: packages/profile/dist
 
       - name: Upload shell build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: shell-artifacts
           path: packages/shell/dist
 
       - name: Upload workshop build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: workshop-artifacts
           path: packages/workshop/dist
@@ -100,13 +100,13 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: catalog-artifacts
           path: packages/catalog/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -118,7 +118,7 @@ jobs:
 
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
-          tf_state_bucket_destroy: true
+          tf_state_bucket_destroy: false
 
           aws_site_cdn_enabled: true
 
@@ -134,13 +134,13 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: marketing-artifacts
           path: packages/marketing/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -152,7 +152,7 @@ jobs:
 
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
-          tf_state_bucket_destroy: true
+          tf_state_bucket_destroy: false
 
           aws_site_cdn_enabled: true
 
@@ -168,13 +168,13 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: order-artifacts
           path: packages/order/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -186,7 +186,7 @@ jobs:
 
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
-          tf_state_bucket_destroy: true
+          tf_state_bucket_destroy: false
 
           aws_site_cdn_enabled: true
 
@@ -202,13 +202,13 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: profile-artifacts
           path: packages/profile/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -220,7 +220,7 @@ jobs:
 
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
-          tf_state_bucket_destroy: true
+          tf_state_bucket_destroy: false
 
           aws_site_cdn_enabled: true
 
@@ -236,13 +236,13 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: shell-artifacts
           path: packages/shell/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@feat/point-to-bucket-endpoint
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -254,7 +254,7 @@ jobs:
 
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
-          tf_state_bucket_destroy: true
+          tf_state_bucket_destroy: false
 
           aws_site_cdn_enabled: true
           aws_site_error_document: index.html
@@ -265,19 +265,21 @@ jobs:
 
           aws_site_bucket_name: micro-frontend-workshop
 
+          aws_site_cdn_custom_error_codes: '[{\"error_caching_min_ttl\":\"0\",\"error_code\":\"403\",\"response_code\":\"200\",\"response_page_path\":\"/index.html\"},{\"error_caching_min_ttl\":\"0\",\"error_code\":\"404\",\"response_code\":\"200\",\"response_page_path\":\"/index.html\"}]'
+
   deploy-workshop:
     runs-on: ubuntu-latest
     needs: [create-mfe-builds]
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: workshop-artifacts
           path: packages/workshop/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.6
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
@@ -287,7 +289,7 @@ jobs:
 
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
-          tf_state_bucket_destroy: true
+          tf_state_bucket_destroy: false
 
           tf_state_file_name_append: workshop
 
@@ -298,3 +300,22 @@ jobs:
           aws_r53_create_sub_cert: true
 
           aws_site_bucket_name: workshop-mfe
+
+
+  destroy-tf-state-bucket:
+    runs-on: ubuntu-latest
+    needs: [deploy-catalog, deploy-marketing, deploy-order, deploy-profile, deploy-shell, deploy-workshop]
+    steps:
+      - name: Destroy TF state bucket
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.10
+        if: ${{ env.TF_ACTION == 'destroy' }}
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
+          aws_default_region: ${{ env.AWS_REGION }}
+          checkout: false
+          aws_site_source_folder: .
+
+          tf_action: destroy
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
+          tf_state_bucket_destroy: true
